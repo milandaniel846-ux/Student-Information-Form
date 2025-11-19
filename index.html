@@ -1,95 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Colegio de Montalban | Student Information Form</title>
 <style>
-  * {margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif;}
+  * {
+    margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif;
+  }
   body {
-    background: linear-gradient(135deg,#4CAF50,#FFEB3B); /* Green to Yellow */
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-    flex-direction:column;
-    padding:20px;
+    background: linear-gradient(135deg, #4CAF50, #FFEB3B);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    padding: 20px;
   }
 
   marquee {
-    background-color:#4CAF50;
-    color:#fff;
-    font-weight:600;
-    font-size:16px;
-    padding:10px 0;
-    width:100%;
-    border-bottom:2px solid #FFC107;
-    letter-spacing:0.5px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 10px 0;
+    width: 100%;
+    border-bottom: 2px solid #FFC107;
+    letter-spacing: 0.5px;
   }
 
-  .container, .role-selection {
-    width:100%;
-    max-width:900px;
-    background:#fff;
-    border-radius:10px;
-    padding:30px 50px;
-    box-shadow:0 0 15px rgba(0,0,0,0.2);
-    margin:20px 0;
-    text-align:center;
+  .container,
+  .role-selection {
+    width: 100%;
+    max-width: 900px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px 50px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    margin: 20px 0;
+    text-align: center;
   }
 
-  h1,h2,h3 {color:#004d40; margin-bottom:10px;}
-  h2 {font-size:18px;font-weight:600;margin-top:30px;border-bottom:1px solid #004d40;padding-bottom:5px;}
-  
-  .form-row {display:flex; flex-wrap:wrap; justify-content:space-between; gap:20px; margin-bottom:12px;}
-  .form-group {flex:1; min-width:200px; display:flex; flex-direction:column;}
-  label {font-weight:600;color:#004d40;margin-bottom:5px;font-size:14px;}
-  input, select {padding:8px 10px;border:1px solid #ccc;border-radius:6px;font-size:14px;background-color:#fafbff;transition:all 0.2s ease-in-out;}
-  input:focus, select:focus {outline:none;border-color:#00796b;box-shadow:0 0 4px rgba(0,121,107,0.3);}
-  
-  .button-row {display:flex; flex-wrap:wrap; justify-content:center; margin-top:30px; gap:15px;}
+  h1, h2, h3 {
+    color: #004d40;
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 30px;
+    border-bottom: 1px solid #004d40;
+    padding-bottom: 5px;
+  }
+
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 12px;
+  }
+  .form-group {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  label {
+    font-weight: 600;
+    color: #004d40;
+    margin-bottom: 5px;
+    font-size: 14px;
+    text-align: left;
+  }
+  input,
+  select {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fafbff;
+    transition: all 0.2s ease-in-out;
+  }
+  input:focus,
+  select:focus {
+    outline: none;
+    border-color: #00796b;
+    box-shadow: 0 0 4px rgba(0, 121, 107, 0.3);
+  }
+
+  input.error,
+  select.error {
+    border-color: red !important;
+  }
+  input.success,
+  select.success {
+    border-color: green !important;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 3px;
+    text-align: left;
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+  }
+
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 15px;
+  }
   button {
-    padding:10px 25px;
-    background-color:#00796b;
-    color:white;
-    font-size:15px;
-    font-weight:500;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    transition:background 0.3s ease;
+    padding: 10px 25px;
+    background-color: #00796b;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
   }
-  button:hover {background-color:#004d40;}
+  button:hover {
+    background-color: #004d40;
+  }
 
-  .role-buttons {display:flex; flex-wrap:wrap; justify-content:center; gap:30px; margin-top:30px;}
-  .role-btn {padding:15px 40px;font-size:18px;font-weight:600;background:#00796b;color:white;border:none;border-radius:10px;cursor:pointer;transition:0.3s;}
-  .role-btn:hover {background:#004d40; transform:scale(1.05);}
+  .role-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  .role-btn {
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    background: #00796b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .role-btn:hover {
+    background: #004d40;
+    transform: scale(1.05);
+  }
 
-  .hidden {display:none;}
-  table {width:100%;border-collapse:collapse;margin-top:20px;}
-  table, th, td {border:1px solid #004d40;}
-  th, td {padding:10px;text-align:center;}
-  th {background-color:#00796b;color:white;}
-  
-  @media (max-width:768px){
-    .form-row {flex-direction:column;}
-    .role-buttons {flex-direction:column;}
+  .hidden {
+    display: none;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  table,
+  th,
+  td {
+    border: 1px solid #004d40;
+  }
+  th,
+  td {
+    padding: 10px;
+    text-align: center;
+  }
+  th {
+    background-color: #00796b;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .form-row {
+      flex-direction: column;
+    }
+    .role-buttons {
+      flex-direction: column;
+    }
   }
 </style>
 </head>
 <body>
 
-<marquee behavior="alternate" direction="left" scrollamount="5" onmouseover="this.stop();" onmouseout="this.start();">
-Daniel Sto. Domingo Jr. • Fritchgerald Galan • Ron Angelo Albar
+<!-- UPDATED MARQUEE -->
+<marquee
+  behavior="alternate"
+  direction="left"
+  scrollamount="5"
+  onmouseover="this.stop();"
+  onmouseout="this.start();"
+>Daniel Sto Domingo • Fritch Galan • Ron Angelo Albar
 </marquee>
 
 <!-- Role Selection -->
 <div class="role-selection" id="role-selection">
-  <div style="margin-bottom:20px;">
-    <img src="c.png" alt="Colegio de Montalban Logo" style="height:80px;">
+  <div style="margin-bottom: 20px">
+    <img src="c:\Users\DESKTOP\Pictures\c.png" alt="Colegio de Montalban Logo" style="height: 80px" />
   </div>
-  <h1>Welcome to Colegio de Montalban System</h1>
-  <p style="font-size:16px;">Please select your role to continue:</p>
+  <h1>Welcome to Colegio De Montalban System</h1>
+  <p style="font-size: 16px">Please select your role to continue:</p>
   <div class="role-buttons">
     <button class="role-btn" onclick="showForm('student')">Student</button>
     <button class="role-btn" onclick="showForm('admin-login')">Admin</button>
@@ -98,44 +215,53 @@ Daniel Sto. Domingo Jr. • Fritchgerald Galan • Ron Angelo Albar
 
 <!-- Student Form -->
 <div class="container hidden" id="student-form">
-  <div style="margin-bottom:20px;">
-    <img src="c.png" alt="Logo" style="height:80px;">
+  <div style="margin-bottom: 20px">
+    <img src="c:\Users\DESKTOP\Pictures\c.png" alt="Logo" style="height: 80px" />
   </div>
   <h1>Colegio de Montalban</h1>
   <h3>Office of the Registrar</h3>
-  <p style="font-weight:500;">Student Information Form</p>
+  <p style="font-weight: 500">Student Information Form</p>
 
   <h2>Personal Information</h2>
+
   <div class="form-row">
     <div class="form-group">
       <label for="lname">Last Name:</label>
-      <input type="text" id="lname" placeholder="Enter last name" oninput="this.value=this.value.replace(/[0-9]/g,'')">
+      <input type="text" id="lname" placeholder="Enter last name" oninput="allowLettersOnly(this)" />
+      <div class="error-message"></div>
     </div>
     <div class="form-group">
       <label for="fname">First Name:</label>
-      <input type="text" id="fname" placeholder="Enter first name" oninput="this.value=this.value.replace(/[0-9]/g,'')">
+      <input type="text" id="fname" placeholder="Enter first name" oninput="allowLettersOnly(this)" />
+      <div class="error-message"></div>
     </div>
   </div>
+
   <div class="form-row">
     <div class="form-group">
       <label for="mname">Middle Name:</label>
-      <input type="text" id="mname" placeholder="Enter middle name" oninput="this.value=this.value.replace(/[0-9]/g,'')">
+      <input type="text" id="mname" placeholder="Enter middle name" oninput="allowLettersOnly(this)" />
+      <div class="error-message"></div>
     </div>
     <div class="form-group">
       <label for="suffix">Suffix (Optional):</label>
-      <input type="text" id="suffix" placeholder="e.g. Jr., III">
+      <input type="text" id="suffix" placeholder="e.g. Jr., III" oninput="allowLettersOnly(this)" />
+      <div class="error-message"></div>
     </div>
   </div>
+
   <div class="form-row">
     <div class="form-group">
       <label for="dob">Date of Birth:</label>
-      <input type="date" id="dob" onchange="calculateAge()">
+      <input type="date" id="dob" onchange="calculateAge()" />
+      <div class="error-message"></div>
     </div>
     <div class="form-group">
       <label for="age">Age:</label>
-      <input type="text" id="age" placeholder="Auto-calculated" readonly>
+      <input type="text" id="age" placeholder="Auto-calculated" readonly />
     </div>
   </div>
+
   <div class="form-row">
     <div class="form-group">
       <label for="gender">Gender:</label>
@@ -144,41 +270,52 @@ Daniel Sto. Domingo Jr. • Fritchgerald Galan • Ron Angelo Albar
         <option value="male">Male</option>
         <option value="female">Female</option>
       </select>
+      <div class="error-message"></div>
     </div>
     <div class="form-group">
       <label for="address">Address:</label>
-      <input type="text" id="address" placeholder="Complete address">
+      <input type="text" id="address" placeholder="Complete address" oninput="allowAddress(this)" />
+      <div class="error-message"></div>
     </div>
   </div>
 
   <h2>Guardian Information</h2>
+
   <div class="form-row">
     <div class="form-group">
       <label for="gname">Guardian's Name:</label>
-      <input type="text" id="gname" placeholder="Enter guardian name" oninput="this.value=this.value.replace(/[0-9]/g,'')">
+      <input type="text" id="gname" placeholder="Enter guardian name" oninput="allowLettersOnly(this)" />
+      <div class="error-message"></div>
     </div>
     <div class="form-group">
       <label for="relationship">Relationship:</label>
-      <input type="text" id="relationship" placeholder="Mother, Father, etc.">
+      <input type="text" id="relationship" placeholder="Mother, Father, etc." oninput="allowLettersOnly(this)" />
+      <div class="error-message"></div>
     </div>
   </div>
+
   <div class="form-row">
     <div class="form-group">
       <label for="gcontact">Contact Number:</label>
-      <input type="text" id="gcontact" placeholder="09XXXXXXXXX" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+      <input type="text" id="gcontact" placeholder="09XXXXXXXXX" maxlength="11" oninput="this.value=this.value.replace(/[^0-9]/g,'')" />
+      <div class="error-message"></div>
     </div>
     <div class="form-group">
       <label for="gaddress">Address:</label>
-      <input type="text" id="gaddress" placeholder="Guardian's address">
+      <input type="text" id="gaddress" placeholder="Guardian's address" oninput="allowAddress(this)" />
+      <div class="error-message"></div>
     </div>
   </div>
 
   <h2>Academic Information</h2>
+
   <div class="form-row">
     <div class="form-group">
       <label for="student-id">Student ID:</label>
-      <input type="text" id="student-id" placeholder="e.g. 2025-12345" oninput="this.value=this.value.replace(/[^0-9\-]/g,'')">
+      <input type="text" id="student-id" placeholder="e.g. 2025-12345" oninput="this.value=this.value.replace(/[^0-9\-]/g,'')" />
+      <div class="error-message"></div>
     </div>
+
     <div class="form-group">
       <label for="course">Course:</label>
       <select id="course">
@@ -198,40 +335,48 @@ Daniel Sto. Domingo Jr. • Fritchgerald Galan • Ron Angelo Albar
           <option>BSBA - Bachelor of Science in Business Administration</option>
         </optgroup>
       </select>
+      <div class="error-message"></div>
     </div>
   </div>
+
   <div class="form-row">
     <div class="form-group">
       <label for="email">Email Address:</label>
-      <input type="text" id="email" placeholder="example@gmail.com">
+      <input type="text" id="email" placeholder="example@gmail.com" />
+      <div class="error-message"></div>
     </div>
+
     <div class="form-group">
       <label for="phone">Contact Number:</label>
-      <input type="text" id="phone" placeholder="09XXXXXXXXX" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+      <input type="text" id="phone" placeholder="09XXXXXXXXX" maxlength="11" oninput="this.value=this.value.replace(/[^0-9]/g,'')" />
+      <div class="error-message"></div>
     </div>
   </div>
 
   <div class="button-row">
     <button type="button" onclick="goBack()">Back</button>
     <button type="button" onclick="submitStudent()">Submit</button>
-    <button type="reset">Clear</button>
   </div>
 </div>
 
 <!-- Admin Login -->
 <div class="container hidden" id="admin-login">
-  <div style="margin-bottom:20px;">
-    <img src="c.png" alt="Logo" style="height:80px;">
+  <div style="margin-bottom: 20px">
+    <img src="c:\Users\DESKTOP\Pictures\c.png" alt="Logo" style="height: 80px" />
   </div>
+  
   <h1>Admin Login</h1>
+
   <div class="form-group login-group">
     <label for="admin-username">Username:</label>
-    <input type="text" id="admin-username" placeholder="Enter username">
+    <input type="text" id="admin-username" placeholder="Enter username" />
   </div>
+
   <div class="form-group login-group">
     <label for="admin-password">Password:</label>
-    <input type="password" id="admin-password" placeholder="Enter password">
+    <input type="password" id="admin-password" placeholder="Enter password" />
   </div>
+
   <div class="button-row">
     <button onclick="loginAdmin()">Login</button>
     <button onclick="goBack()">Back</button>
@@ -240,11 +385,13 @@ Daniel Sto. Domingo Jr. • Fritchgerald Galan • Ron Angelo Albar
 
 <!-- Admin Dashboard -->
 <div class="container hidden" id="admin-section">
-  <div style="margin-bottom:20px;">
-    <img src="c.png" alt="Logo" style="height:80px;">
+  <div style="margin-bottom: 20px">
+    <img src="c:\Users\DESKTOP\Pictures\c.png" alt="Logo" style="height: 80px" />
   </div>
+
   <h1>Admin Dashboard</h1>
-  <p style="color:#004d40; font-weight:500;">Student Records</p>
+  <p style="color: #004d40; font-weight: 500">Student Records</p>
+
   <table id="student-records">
     <thead>
       <tr>
@@ -257,86 +404,185 @@ Daniel Sto. Domingo Jr. • Fritchgerald Galan • Ron Angelo Albar
     </thead>
     <tbody></tbody>
   </table>
+
   <div class="button-row">
     <button onclick="logoutAdmin()">Logout</button>
   </div>
 </div>
 
 <script>
-let students = JSON.parse(localStorage.getItem('students') || '[]');
 
-function showForm(role){
-  document.getElementById('role-selection').classList.add('hidden');
-  document.getElementById('student-form').classList.add('hidden');
-  document.getElementById('admin-login').classList.add('hidden');
-  document.getElementById('admin-section').classList.add('hidden');
-  if(role==='student') document.getElementById('student-form').classList.remove('hidden');
-  if(role==='admin-login') document.getElementById('admin-login').classList.remove('hidden');
-}
+  /* ====== INPUT FILTER FUNCTIONS ====== */
 
-function goBack(){
-  document.getElementById('student-form').classList.add('hidden');
-  document.getElementById('admin-login').classList.add('hidden');
-  document.getElementById('role-selection').classList.remove('hidden');
-}
+  function allowLettersOnly(input) {
+    input.value = input.value.replace(/[^A-Za-z\s]/g, "");
+  }
 
-function calculateAge(){
-  const dob = document.getElementById("dob").value;
-  const ageField = document.getElementById("age");
-  if(dob){
-    const birthDate = new Date(dob);
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const m = today.getMonth() - birthDate.getMonth();
-    if(m<0||(m===0 && today.getDate()<birthDate.getDate())) age--;
-    ageField.value = age + " years old";
-  } else ageField.value="";
-}
+  function allowAddress(input) {
+    input.value = input.value.replace(/[^A-Za-z0-9\s]/g, "");
+  }
 
-function submitStudent(){
-  const student = {
-    id: document.getElementById('student-id').value,
-    name: `${document.getElementById('fname').value} ${document.getElementById('mname').value} ${document.getElementById('lname').value}`,
-    course: document.getElementById('course').value,
-    email: document.getElementById('email').value,
-    contact: document.getElementById('phone').value
+  let students = JSON.parse(localStorage.getItem("students") || "[]");
+
+  function showForm(role) {
+    document.getElementById("role-selection").classList.add("hidden");
+    document.getElementById("student-form").classList.add("hidden");
+    document.getElementById("admin-login").classList.add("hidden");
+    document.getElementById("admin-section").classList.add("hidden");
+
+    if (role === "student")
+      document.getElementById("student-form").classList.remove("hidden");
+    if (role === "admin-login")
+      document.getElementById("admin-login").classList.remove("hidden");
+  }
+
+  function goBack() {
+    document.getElementById("student-form").classList.add("hidden");
+    document.getElementById("admin-login").classList.add("hidden");
+    document.getElementById("role-selection").classList.remove("hidden");
+  }
+
+  function calculateAge() {
+    const dob = document.getElementById("dob").value;
+    const ageField = document.getElementById("age");
+    if (dob) {
+      const birthDate = new Date(dob);
+      const today = new Date();
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+      ageField.value = age + " years old";
+    } else ageField.value = "";
+  }
+
+  function setError(input, message) {
+    input.classList.add("error");
+    input.classList.remove("success");
+    input.parentElement.querySelector(".error-message").textContent = message;
+  }
+
+  function setSuccess(input) {
+    input.classList.remove("error");
+    input.classList.add("success");
+    input.parentElement.querySelector(".error-message").textContent = "";
+  }
+
+  function validateInput(input) {
+    const value = input.value.trim();
+
+    if (value === "") {
+      setError(input, "This field is required.");
+      return false;
+    }
+
+    if ((input.id === "phone" || input.id === "gcontact") && value.length !== 11) {
+      setError(input, "Contact number must be exactly 11 digits.");
+      return false;
+    }
+
+    setSuccess(input);
+    return true;
+  }
+
+  window.onload = function () {
+    addValidationListeners();
   };
-  students.push(student);
-  localStorage.setItem('students', JSON.stringify(students));
-  alert('Student submitted successfully!');
-  document.getElementById('student-form').reset();
-}
 
-function loginAdmin(){
-  const username = document.getElementById('admin-username').value;
-  const password = document.getElementById('admin-password').value;
-  if(username==='admin' && password==='password123'){
-    document.getElementById('admin-login').classList.add('hidden');
-    document.getElementById('admin-section').classList.remove('hidden');
-    displayStudents();
-  } else alert('Invalid username or password');
-}
+  function addValidationListeners() {
+    const ids = [
+      "lname", "fname", "mname", "dob", "gender", "address",
+      "gname", "relationship", "gaddress", "course", "email", "phone", "gcontact"
+    ];
 
-function displayStudents(){
-  const tbody = document.querySelector('#student-records tbody');
-  tbody.innerHTML='';
-  students.forEach(s=>{
-    tbody.innerHTML+=`<tr>
-      <td>${s.id}</td>
-      <td>${s.name}</td>
-      <td>${s.course}</td>
-      <td>${s.email}</td>
-      <td>${s.contact}</td>
-    </tr>`;
-  });
-}
+    ids.forEach((id) => {
+      const input = document.getElementById(id);
+      input.addEventListener("blur", () => validateInput(input));
+    });
+  }
 
-function logoutAdmin(){
-  document.getElementById('admin-section').classList.add('hidden');
-  document.getElementById('role-selection').classList.remove('hidden');
-}
+  function submitStudent() {
+    const ids = [
+      "lname", "fname", "mname", "dob", "gender", "address",
+      "gname", "relationship", "gcontact", "gaddress",
+      "student-id", "course", "email", "phone"
+    ];
+
+    let isValid = true;
+
+    ids.forEach((id) => {
+      const input = document.getElementById(id);
+      if (!validateInput(input)) isValid = false;
+    });
+
+    if (!isValid) {
+      alert("Please fill out all required fields correctly.");
+      return;
+    }
+
+    const student = {
+      id: document.getElementById("student-id").value.trim(),
+      lname: document.getElementById("lname").value.trim(),
+      fname: document.getElementById("fname").value.trim(),
+      mname: document.getElementById("mname").value.trim(),
+      suffix: document.getElementById("suffix").value.trim(),
+      dob: document.getElementById("dob").value,
+      age: document.getElementById("age").value,
+      gender: document.getElementById("gender").value,
+      address: document.getElementById("address").value.trim(),
+      gname: document.getElementById("gname").value.trim(),
+      relationship: document.getElementById("relationship").value.trim(),
+      gcontact: document.getElementById("gcontact").value.trim(),
+      gaddress: document.getElementById("gaddress").value.trim(),
+      course: document.getElementById("course").value,
+      email: document.getElementById("email").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+    };
+
+    students.push(student);
+    localStorage.setItem("students", JSON.stringify(students));
+
+    alert("Student information saved successfully!");
+    document.getElementById("student-form").reset();
+  }
+
+  function loginAdmin() {
+    const user = document.getElementById("admin-username").value.trim();
+    const pass = document.getElementById("admin-password").value.trim();
+
+    if (user === "admin" && pass === "123") {
+      document.getElementById("admin-login").classList.add("hidden");
+      document.getElementById("admin-section").classList.remove("hidden");
+      loadStudentRecords();
+    } else {
+      alert("Invalid username or password!");
+    }
+  }
+
+  function loadStudentRecords() {
+    const tbody = document.querySelector("#student-records tbody");
+    tbody.innerHTML = "";
+    
+    students.forEach((student) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${student.id}</td>
+        <td>${student.lname}, ${student.fname} ${student.mname} ${student.suffix}</td>
+        <td>${student.course}</td>
+        <td>${student.email}</td>
+        <td>${student.phone}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function logoutAdmin() {
+    document.getElementById("admin-section").classList.add("hidden");
+    document.getElementById("role-selection").classList.remove("hidden");
+    document.getElementById("admin-username").value = "";
+    document.getElementById("admin-password").value = "";
+  }
+
 </script>
+
 </body>
 </html>
-
-
