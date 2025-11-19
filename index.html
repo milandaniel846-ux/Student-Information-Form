@@ -9,7 +9,8 @@
     margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif;
   }
   body {
-    background: linear-gradient(135deg, #4CAF50, #FFEB3B);
+    background: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text for contrast */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,13 +20,13 @@
   }
 
   marquee {
-    background-color: #4CAF50;
-    color: #fff;
+    background-color: #1f1f1f;
+    color: #ffeb3b;
     font-weight: 600;
     font-size: 16px;
     padding: 10px 0;
     width: 100%;
-    border-bottom: 2px solid #FFC107;
+    border-bottom: 2px solid #ffc107;
     letter-spacing: 0.5px;
   }
 
@@ -33,23 +34,24 @@
   .role-selection {
     width: 100%;
     max-width: 900px;
-    background: #fff;
+    background: #1f1f1f; /* Darker container */
     border-radius: 10px;
     padding: 30px 50px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     margin: 20px 0;
     text-align: center;
+    color: #e0e0e0;
   }
 
-  h1, h2, h3 {
-    color: #004d40;
-    margin-bottom: 10px;
+  h1, h2, h3, label, p {
+    color: #e0e0e0;
   }
+
   h2 {
     font-size: 18px;
     font-weight: 600;
     margin-top: 30px;
-    border-bottom: 1px solid #004d40;
+    border-bottom: 1px solid #ffeb3b;
     padding-bottom: 5px;
   }
 
@@ -69,7 +71,6 @@
   }
   label {
     font-weight: 600;
-    color: #004d40;
     margin-bottom: 5px;
     font-size: 14px;
     text-align: left;
@@ -77,30 +78,31 @@
   input,
   select {
     padding: 8px 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #555;
     border-radius: 6px;
     font-size: 14px;
-    background-color: #fafbff;
+    background-color: #2b2b2b;
+    color: #e0e0e0;
     transition: all 0.2s ease-in-out;
   }
   input:focus,
   select:focus {
     outline: none;
-    border-color: #00796b;
-    box-shadow: 0 0 4px rgba(0, 121, 107, 0.3);
+    border-color: #ffeb3b;
+    box-shadow: 0 0 4px rgba(255, 235, 59, 0.5);
   }
 
   input.error,
   select.error {
-    border-color: red !important;
+    border-color: #ff5252 !important;
   }
   input.success,
   select.success {
-    border-color: green !important;
+    border-color: #4caf50 !important;
   }
 
   .error-message {
-    color: red;
+    color: #ff5252;
     font-size: 12px;
     margin-top: 3px;
     text-align: left;
@@ -118,8 +120,8 @@
   }
   button {
     padding: 10px 25px;
-    background-color: #00796b;
-    color: white;
+    background-color: #ffeb3b;
+    color: #121212;
     font-size: 15px;
     font-weight: 500;
     border: none;
@@ -128,7 +130,7 @@
     transition: background 0.3s ease;
   }
   button:hover {
-    background-color: #004d40;
+    background-color: #ffc107;
   }
 
   .role-buttons {
@@ -142,15 +144,15 @@
     padding: 15px 40px;
     font-size: 18px;
     font-weight: 600;
-    background: #00796b;
-    color: white;
+    background: #ffeb3b;
+    color: #121212;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     transition: 0.3s;
   }
   .role-btn:hover {
-    background: #004d40;
+    background: #ffc107;
     transform: scale(1.05);
   }
 
@@ -162,11 +164,12 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    color: #e0e0e0;
   }
   table,
   th,
   td {
-    border: 1px solid #004d40;
+    border: 1px solid #555;
   }
   th,
   td {
@@ -174,8 +177,8 @@
     text-align: center;
   }
   th {
-    background-color: #00796b;
-    color: white;
+    background-color: #ffeb3b;
+    color: #121212;
   }
 
   @media (max-width: 768px) {
@@ -190,7 +193,6 @@
 </head>
 <body>
 
-<!-- UPDATED MARQUEE -->
 <marquee
   behavior="alternate"
   direction="left"
@@ -200,7 +202,6 @@
 >Daniel Sto Domingo • Fritchgerald Galan • Ron Angelo Albar
 </marquee>
 
-<!-- Role Selection -->
 <div class="role-selection" id="role-selection">
   <div style="margin-bottom: 20px">
     <img src="c.png" alt="Colegio de Montalban Logo" style="height: 80px" />
@@ -213,7 +214,6 @@
   </div>
 </div>
 
-<!-- Student Form -->
 <div class="container hidden" id="student-form">
   <div style="margin-bottom: 20px">
     <img src="c.png" alt="Logo" style="height: 80px" />
@@ -359,7 +359,6 @@
   </div>
 </div>
 
-<!-- Admin Login -->
 <div class="container hidden" id="admin-login">
   <div style="margin-bottom: 20px">
     <img src="c.png" alt="Logo" style="height: 80px" />
@@ -383,14 +382,13 @@
   </div>
 </div>
 
-<!-- Admin Dashboard -->
 <div class="container hidden" id="admin-section">
   <div style="margin-bottom: 20px">
     <img src="c.png" alt="Logo" style="height: 80px" />
   </div>
 
   <h1>Admin Dashboard</h1>
-  <p style="color: #004d40; font-weight: 500">Student Records</p>
+  <p style="color: #e0e0e0; font-weight: 500">Student Records</p>
 
   <table id="student-records">
     <thead>
@@ -411,16 +409,8 @@
 </div>
 
 <script>
-
-  /* ====== INPUT FILTER FUNCTIONS ====== */
-
-  function allowLettersOnly(input) {
-    input.value = input.value.replace(/[^A-Za-z\s]/g, "");
-  }
-
-  function allowAddress(input) {
-    input.value = input.value.replace(/[^A-Za-z0-9\s]/g, "");
-  }
+  function allowLettersOnly(input) { input.value = input.value.replace(/[^A-Za-z\s]/g, ""); }
+  function allowAddress(input) { input.value = input.value.replace(/[^A-Za-z0-9\s]/g, ""); }
 
   let students = JSON.parse(localStorage.getItem("students") || "[]");
 
@@ -429,11 +419,8 @@
     document.getElementById("student-form").classList.add("hidden");
     document.getElementById("admin-login").classList.add("hidden");
     document.getElementById("admin-section").classList.add("hidden");
-
-    if (role === "student")
-      document.getElementById("student-form").classList.remove("hidden");
-    if (role === "admin-login")
-      document.getElementById("admin-login").classList.remove("hidden");
+    if (role === "student") document.getElementById("student-form").classList.remove("hidden");
+    if (role === "admin-login") document.getElementById("admin-login").classList.remove("hidden");
   }
 
   function goBack() {
@@ -460,7 +447,6 @@
     input.classList.remove("success");
     input.parentElement.querySelector(".error-message").textContent = message;
   }
-
   function setSuccess(input) {
     input.classList.remove("error");
     input.classList.add("success");
@@ -469,31 +455,17 @@
 
   function validateInput(input) {
     const value = input.value.trim();
-
-    if (value === "") {
-      setError(input, "This field is required.");
-      return false;
-    }
-
+    if (value === "") { setError(input, "This field is required."); return false; }
     if ((input.id === "phone" || input.id === "gcontact") && value.length !== 11) {
-      setError(input, "Contact number must be exactly 11 digits.");
-      return false;
+      setError(input, "Contact number must be exactly 11 digits."); return false;
     }
-
-    setSuccess(input);
-    return true;
+    setSuccess(input); return true;
   }
 
-  window.onload = function () {
-    addValidationListeners();
-  };
+  window.onload = function () { addValidationListeners(); }
 
   function addValidationListeners() {
-    const ids = [
-      "lname", "fname", "mname", "dob", "gender", "address",
-      "gname", "relationship", "gaddress", "course", "email", "phone", "gcontact"
-    ];
-
+    const ids = ["lname", "fname", "mname", "dob", "gender", "address","gname","relationship","gaddress","course","email","phone","gcontact"];
     ids.forEach((id) => {
       const input = document.getElementById(id);
       input.addEventListener("blur", () => validateInput(input));
@@ -501,23 +473,10 @@
   }
 
   function submitStudent() {
-    const ids = [
-      "lname", "fname", "mname", "dob", "gender", "address",
-      "gname", "relationship", "gcontact", "gaddress",
-      "student-id", "course", "email", "phone"
-    ];
-
+    const ids = ["lname","fname","mname","dob","gender","address","gname","relationship","gcontact","gaddress","student-id","course","email","phone"];
     let isValid = true;
-
-    ids.forEach((id) => {
-      const input = document.getElementById(id);
-      if (!validateInput(input)) isValid = false;
-    });
-
-    if (!isValid) {
-      alert("Please fill out all required fields correctly.");
-      return;
-    }
+    ids.forEach((id) => { if (!validateInput(document.getElementById(id))) isValid = false; });
+    if (!isValid) { alert("Please fill out all required fields correctly."); return; }
 
     const student = {
       id: document.getElementById("student-id").value.trim(),
@@ -529,62 +488,49 @@
       age: document.getElementById("age").value,
       gender: document.getElementById("gender").value,
       address: document.getElementById("address").value.trim(),
-      gname: document.getElementById("gname").value.trim(),
+      guardian: document.getElementById("gname").value.trim(),
       relationship: document.getElementById("relationship").value.trim(),
       gcontact: document.getElementById("gcontact").value.trim(),
       gaddress: document.getElementById("gaddress").value.trim(),
       course: document.getElementById("course").value,
       email: document.getElementById("email").value.trim(),
-      phone: document.getElementById("phone").value.trim(),
+      phone: document.getElementById("phone").value.trim()
     };
-
     students.push(student);
     localStorage.setItem("students", JSON.stringify(students));
-
     alert("Student information saved successfully!");
     document.getElementById("student-form").reset();
   }
 
   function loginAdmin() {
-    const user = document.getElementById("admin-username").value.trim();
-    const pass = document.getElementById("admin-password").value.trim();
-
-    if (user === "admin" && pass === "123") {
+    const username = document.getElementById("admin-username").value;
+    const password = document.getElementById("admin-password").value;
+    if(username === "admin" && password === "admin123") {
       document.getElementById("admin-login").classList.add("hidden");
       document.getElementById("admin-section").classList.remove("hidden");
-      loadStudentRecords();
-    } else {
-      alert("Invalid username or password!");
-    }
-  }
-
-  function loadStudentRecords() {
-    const tbody = document.querySelector("#student-records tbody");
-    tbody.innerHTML = "";
-    
-    students.forEach((student) => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${student.id}</td>
-        <td>${student.lname}, ${student.fname} ${student.mname} ${student.suffix}</td>
-        <td>${student.course}</td>
-        <td>${student.email}</td>
-        <td>${student.phone}</td>
-      `;
-      tbody.appendChild(tr);
-    });
+      displayStudents();
+    } else alert("Invalid credentials!");
   }
 
   function logoutAdmin() {
     document.getElementById("admin-section").classList.add("hidden");
     document.getElementById("role-selection").classList.remove("hidden");
-    document.getElementById("admin-username").value = "";
-    document.getElementById("admin-password").value = "";
   }
 
+  function displayStudents() {
+    const tbody = document.querySelector("#student-records tbody");
+    tbody.innerHTML = "";
+    students.forEach((student) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td>${student.id}</td>
+                      <td>${student.lname}, ${student.fname} ${student.mname} ${student.suffix}</td>
+                      <td>${student.course}</td>
+                      <td>${student.email}</td>
+                      <td>${student.phone}</td>`;
+      tbody.appendChild(tr);
+    });
+  }
 </script>
 
 </body>
 </html>
-
-
